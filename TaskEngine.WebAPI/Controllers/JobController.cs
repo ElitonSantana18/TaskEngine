@@ -42,7 +42,7 @@ namespace TaskEngine.WebAPI.Controllers
             var job = await _jobService.GetJobByIdAsync(id);
             if (job == null)
             {
-                return NotFound("Tarefa não encontrada.");
+                return NotFound("Job not found.");
             }
 
             return Ok(job);
@@ -53,13 +53,13 @@ namespace TaskEngine.WebAPI.Controllers
         {
             if (updatedJob == null)
             {
-                return BadRequest("Tarefa inválida.");
+                return BadRequest("Job is Invalid.");
             }
 
             var existingJob = await _jobService.GetJobByIdAsync(id);
             if (existingJob == null)
             {
-                return NotFound("Tarefa não encontrada.");
+                return NotFound("Job not found.");
             }
 
             updatedJob.Id = existingJob.Id; // Garante que o ID não será alterado
@@ -73,7 +73,7 @@ namespace TaskEngine.WebAPI.Controllers
             var job = await _jobService.GetJobByIdAsync(id);
             if (job == null)
             {
-                return NotFound("Tarefa não encontrada.");
+                return NotFound("Job not found.");
             }
 
             await _jobService.DeleteJobAsync(id);
