@@ -60,7 +60,7 @@ TaskEngine é uma aplicação para o recebimento, armazenamento e processamento 
 
 ###### Clone e acesse o repositório - use o comando git clone 
 ```
-git clone https://github.com/ElitonSantana/taskengine.git
+git clone https://github.com/ElitonSantana18/taskengine.git
 cd taskengine
 ```
 
