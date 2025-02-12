@@ -13,7 +13,8 @@ services:
     environment:
       MONGO_URL: "mongodb://mongodb:27017"
       RABBITMQ_URL: "rabbitmq"
-    entrypoint: ["./wait-for-it.sh", "rabbitmq:5672", "--", "./wait-for-it.sh", "mongodb:27017", "--", "dotnet", "TaskEngine.WebAPI.dll"]
+    entrypoint: ["dotnet", "TaskEngine.WebAPI.dll"]
+    # entrypoint: ["./wait-for-it.sh", "rabbitmq:5672", "--", "./wait-for-it.sh", "mongodb:27017", "--", "dotnet", "TaskEngine.WebAPI.dll"]
 
   rabbitmq:
     image: "rabbitmq:3-management"
