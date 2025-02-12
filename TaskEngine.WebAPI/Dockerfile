@@ -1,11 +1,11 @@
 # Etapa base (antes de mudar para o usuário 'app')
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
-# Copiar o script wait-for-it.sh para o container
-COPY wait-for-it.sh /app/wait-for-it.sh
-
-# Executar chmod como root para garantir permissões corretas
-RUN chmod +x /app/wait-for-it.sh
+## Copiar o script wait-for-it.sh para o container
+#COPY wait-for-it.sh /app/wait-for-it.sh
+#
+## Executar chmod como root para garantir permissões corretas
+#RUN chmod +x /app/wait-for-it.sh
 
 # Definir o usuário 'app' depois de garantir que o arquivo tenha permissões corretas
 USER app
@@ -33,6 +33,7 @@ RUN dotnet publish "./TaskEngine.WebAPI.csproj" -c $BUILD_CONFIGURATION -o /app/
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "TaskEngine.WebAPI.dll"]
 
 # Alterar ENTRYPOINT para usar o script wait-for-it.sh
-ENTRYPOINT ["sh", "-c", "/app/wait-for-it.sh rabbitmq:5672 -- /app/wait-for-it.sh mongodb:27017 -- dotnet TaskEngine.WebAPI.dll"]
+#ENTRYPOINT ["sh", "-c", "/app/wait-for-it.sh rabbitmq:5672 -- /app/wait-for-it.sh mongodb:27017 -- dotnet TaskEngine.WebAPI.dll"]
