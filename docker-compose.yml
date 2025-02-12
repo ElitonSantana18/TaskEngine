@@ -3,7 +3,7 @@ version: "3.8"
 services:
   taskengine.webapi:
     build:
-      context: ./TaskEngine.WebAPI
+      context: .
       dockerfile: TaskEngine.WebAPI/Dockerfile
     image: taskenginewebapi
     container_name: taskengine-webapi
